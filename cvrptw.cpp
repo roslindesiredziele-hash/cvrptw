@@ -1,20 +1,22 @@
-#include <iostream>
-#include <string>
-#include <vector>
+#include "cvrptw.h"
 #include <cmath>
 
-using namespace std;
-
-class Customers
-    {
-    public:
-//        int vehicule 200;
-  //      int capacity 200;
-    };
-
-/*int main()
+CVRPTW::CVRPTW(int vehicleCapacity)
+    : vehicleCapacity(vehicleCapacity)
 {
-
-    return 0;
 }
-*/
+
+void CVRPTW::addCustomer(const Customer& c)
+{
+    customers.push_back(c);
+}
+
+double CVRPTW::distance(int id1, int id2) const
+{
+    const auto& a = customers[id1];
+    const auto& b = customers[id2];
+
+    double dx = a.x - b.x;
+    double dy = a.y - b.y;
+    return std::sqrt(dx * dx + dy * dy);
+}
